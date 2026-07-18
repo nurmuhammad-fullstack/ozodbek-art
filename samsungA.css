@@ -195,6 +195,28 @@ table td:last-child {
   background: var(--accent);
 }
 
+/* FOOTER */
+footer {
+  border-top: 1px solid var(--line);
+  padding: 36px 48px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 14px;
+  color: var(--muted);
+}
+
+footer .contact-numbers a {
+  color: var(--ink);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+footer .contact-numbers a:hover {
+  color: var(--accent);
+}
+
 @media (max-width: 760px) {
   .product-page {
     flex-direction: column;
