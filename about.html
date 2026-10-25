@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Us — PHLOX & OZODBEK-ART | Biz Haqimizda</title>
+  <meta name="description" content="OZODBEK-ART va PHLOX tarixi, ijodiy falsafasi va qo'lda ishlangan gadjet san'ati haqida bilib oling.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- TOP ANNOUNCEMENT BAR -->
+  <div class="top-announcement">
+    <div class="container" style="display:flex; justify-content:space-between; align-items:center; width:100%;">
+      <div class="left">
+        <span class="live-dot"></span>
+        <span>Telegram Bot orqali buyurtmalar 24/7 qabul qilinadi</span>
+      </div>
+      <div class="right">
+        <button class="btn-settings-link" onclick="openSettingsModal()">⚙️ Telegram Sozlamalari</button>
+        <a href="tel:+998977371717">📞 +998 97 737-17-17</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- SITE HEADER -->
+  <header class="site-header">
+    <div class="container">
+      <div class="nav-wrapper">
+        <a href="index.html" class="brand-logo">
+          PHLOX<span class="dot">.</span>
+          <span class="subtag">ART</span>
+        </a>
+
+        <ul class="nav-menu" id="navMenu">
+          <li><a href="index.html" class="nav-link">Home</a></li>
+          <li><a href="shop.html" class="nav-link">Shop</a></li>
+          <li><a href="about.html" class="nav-link active">About Us</a></li>
+          <li><a href="blog.html" class="nav-link">Blog</a></li>
+          <li><a href="contact.html" class="nav-link">Contact Us</a></li>
+        </ul>
+
+        <div class="nav-actions">
+          <button class="nav-login-btn" onclick="openLoginModal()">login</button>
+          <button class="icon-btn" onclick="openSearchModal()" title="Qidiruv">
+            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+            </svg>
+          </button>
+          <button class="icon-btn" onclick="openCartDrawer()" title="Savat">
+            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path>
+            </svg>
+            <span class="cart-count-badge" style="display:none;">0</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- SUBPAGE HERO BANNER -->
+  <section class="subpage-hero">
+    <div class="container">
+      <h1>Biz Haqimizda</h1>
+      <p>Texnologiya va qo'l mehnati san'ati uyg'unlashgan makon</p>
+      <div class="breadcrumb">
+        <a href="index.html">Bosh sahifa</a>
+        <span>/</span>
+        <span class="current">Biz haqimizda</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT CONTENT SECTION -->
+  <section class="about-section">
+    <div class="container">
+      
+      <div class="about-grid">
+        <div class="about-img-box">
+          <img src="./image copy 4.png" alt="Ozodbek Art Smartfonlar Kolleksiyasi" style="max-height:360px; object-fit:cover; width:100%;">
+        </div>
+        <div class="about-content">
+          <span style="font-size:13px; font-weight:800; color:var(--primary-red); letter-spacing:0.1em; text-transform:uppercase;">BIZNING FALSAFAMIZ</span>
+          <h2>PHLOX & OZODBEK-ART — San'at va Texnologiya</h2>
+          <p>
+            OZODBEK-ART — bu oddiy karton va qog'oz varaqlarini haqiqiy san'at durdonalariga aylantiruvchi noyob ijodiy loyiha. Biz har bir smartfon, monitor va gadjet modelini o'zgacha mehr va yuksak fantaziya bilan qo'lda yaratamiz.
+          </p>
+          <p>
+            Bizning maqsadimiz — zamonaviy texnologiyalarni badiiy ko'rinishda taqdim etish va har bir xonadonga iliqlik, ijodkorlik hamda samimiy tabassum ulashishdir. Har bir mahsulot — takrorlanmas yagona san'at asaridir!
+          </p>
+          
+          <div class="about-stats">
+            <div class="stat-box">
+              <strong>480+</strong>
+              <span>Muvaffaqiyatli buyurtma</span>
+            </div>
+            <div class="stat-box">
+              <strong>100%</strong>
+              <span>Qo'l mehnati (Handmade)</span>
+            </div>
+            <div class="stat-box">
+              <strong>24/7</strong>
+              <span>Telegramda tezkor aloqa</span>
+            </div>
+          </div>
+
+          <div style="margin-top: 32px;">
+            <a href="shop.html" class="btn-pill-red">
+              Katalogni tomosha qilish
+            </a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- TRUST BADGES -->
+  <section class="trust-section">
+    <div class="container">
+      <div class="trust-grid">
+        <div class="trust-item"><div class="trust-icon-box">🚚</div><div><h4>Free Shipping</h4><p>Free Shipping On All Order</p></div></div>
+        <div class="trust-item"><div class="trust-icon-box">🛡️</div><div><h4>Money Guarantee</h4><p>30 Day Money Back</p></div></div>
+        <div class="trust-item"><div class="trust-icon-box">🎧</div><div><h4>Online Support 24/7</h4><p>Technical Support 24/7</p></div></div>
+        <div class="trust-item"><div class="trust-icon-box">💳</div><div><h4>Secure Payment</h4><p>All Cards Accepted</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <a href="index.html" class="brand-logo">PHLOX<span class="dot">.</span><span class="subtag">ART</span></a>
+          <p class="footer-desc">Eng sara smartfonlar va noyob karton san'at asarlarining rasmiy onlayn do'koni.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Sahifalar</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="shop.html">Shop</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Mijozlar xizmati</h4>
+          <div class="footer-contact-item"><span>📞</span> <a href="tel:+998977371717"><strong>+998 97 737-17-17</strong></a></div>
+          <div class="footer-contact-item"><span>🤖</span> <span>Telegram: @ozodbek_art_bot</span></div>
+          <button class="btn-settings-link" onclick="openSettingsModal()">⚙️ Bot sozlamalari</button>
+        </div>
+        <div class="footer-col">
+          <h4>Manzil</h4>
+          <p style="font-size:14px; color:#8c93a3; line-height:1.7;">O'zbekiston, Toshkent shahri, Chilonzor tumani.<br>Yetkazib berish butun O'zbekiston bo'ylab ishlaydi.</p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2026 PHLOX & OZODBEK-ART. Barcha huquqlar himoyalangan.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- CART DRAWER & MODALS -->
+  <div class="cart-drawer" id="cartDrawer">
+    <div class="cart-drawer-header"><h3>Savat</h3><button class="cart-close-btn" onclick="closeCartDrawer()">✕</button></div>
+    <div class="cart-drawer-empty" id="cartDrawerEmpty"><div class="empty-icon">🛒</div><p>Savatingiz bo'sh</p></div>
+    <div class="cart-drawer-items" id="cartDrawerItems"></div>
+    <div class="cart-drawer-footer" id="cartDrawerFooter" style="display:none;">
+      <div class="cart-total-row"><span>Jami summa:</span><span id="cartDrawerTotal">0 so'm</span></div>
+      <button class="btn-checkout" onclick="openCheckoutModal()">Telegram orqali buyurtma berish ✈️</button>
+    </div>
+  </div>
+
+  <div class="modal-box" id="checkoutModal">
+    <div class="modal-header"><h3>🛍 Buyurtmani rasmiylashtirish</h3><button class="modal-close" onclick="closeCheckoutModal()">✕</button></div>
+    <div class="modal-body">
+      <div class="checkout-summary-box">
+        <div id="checkoutOrderSummary"></div>
+        <div class="checkout-total-row"><span>Jami:</span><span id="checkoutOrderTotal">0 so'm</span></div>
+      </div>
+      <form id="checkoutForm">
+        <div class="form-group"><label>Ism va Familiyangiz *</label><input type="text" name="customerName" class="form-control" required></div>
+        <div class="form-group"><label>Telefon raqamingiz *</label><input type="tel" name="customerPhone" class="form-control" value="+998 " required></div>
+        <div class="form-group"><label>Manzil *</label><input type="text" name="customerAddress" class="form-control" required></div>
+        <div class="form-group">
+          <label>To'lov turi</label>
+          <select name="paymentMethod" class="form-control">
+            <option>Naqd pul / Qabul qilganda</option>
+            <option>Click / Payme</option>
+            <option>Telegram orqali kelishish</option>
+          </select>
+        </div>
+        <div class="form-group"><label>Izoh</label><textarea name="customerComment" class="form-control"></textarea></div>
+        <button type="submit" id="checkoutSubmitBtn" class="btn-submit-order">✈️ Telegram Botga Buyurtma Yuborish</button>
+      </form>
+    </div>
+  </div>
+
+  <div class="modal-box" id="settingsModal">
+    <div class="modal-header"><h3>⚙️ Telegram Bot Sozlamalari</h3><button class="modal-close" onclick="closeSettingsModal()">✕</button></div>
+    <div class="modal-body">
+      <form id="telegramSettingsForm">
+        <div class="form-group"><label>Bot Token</label><input type="text" id="settingBotToken" name="botToken" class="form-control" required></div>
+        <div class="form-group"><label>Chat ID</label><input type="text" id="settingChatId" name="chatId" class="form-control" required></div>
+        <div class="form-group"><label>Bot Username</label><input type="text" id="settingBotUsername" name="botUsername" class="form-control"></div>
+        <button type="submit" class="btn-pill-red" style="width:100%; padding:13px;">Saqlash</button>
+      </form>
+    </div>
+  </div>
+
+  <div class="modal-box search-modal-box" id="searchModal">
+    <div class="modal-header"><h3>🔍 Qidiruv</h3><button class="modal-close" onclick="closeSearchModal()">✕</button></div>
+    <div class="modal-body">
+      <div class="search-input-wrap"><input type="text" id="searchInputModal" placeholder="Mahsulot nomi..."></div>
+      <div class="search-results-list" id="searchResultsModal"></div>
+    </div>
+  </div>
+
+  <div class="modal-box" id="loginModal">
+    <div class="modal-header"><h3>Kirish</h3><button class="modal-close" onclick="closeLoginModal()">✕</button></div>
+    <div class="modal-body">
+      <form onsubmit="event.preventDefault(); showToast('Kirildi', 'success'); closeLoginModal();">
+        <div class="form-group"><label>Telefon</label><input type="text" class="form-control" required></div>
+        <div class="form-group"><label>Parol</label><input type="password" class="form-control" required></div>
+        <button type="submit" class="btn-pill-red" style="width:100%; padding:13px;">Kirish</button>
+      </form>
+    </div>
+  </div>
+
+  <div class="modal-backdrop" id="modalBackdrop"></div>
+  <script src="script.js"></script>
+</body>
+</html>

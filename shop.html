@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shop Katalog — PHLOX & OZODBEK-ART | Barcha Mahsulotlar</title>
+  <meta name="description" content="PHLOX & OZODBEK-ART do'konidagi barcha smartfonlar, kompyuterlar va san'at buyumlari katalogi.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- TOP ANNOUNCEMENT BAR -->
+  <div class="top-announcement">
+    <div class="container" style="display:flex; justify-content:space-between; align-items:center; width:100%;">
+      <div class="left">
+        <span class="live-dot"></span>
+        <span>Telegram Bot orqali buyurtmalar 24/7 qabul qilinadi</span>
+      </div>
+      <div class="right">
+        <button class="btn-settings-link" onclick="openSettingsModal()">
+          ⚙️ Telegram Sozlamalari
+        </button>
+        <a href="tel:+998977371717">📞 +998 97 737-17-17</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- SITE HEADER -->
+  <header class="site-header">
+    <div class="container">
+      <div class="nav-wrapper">
+        <a href="index.html" class="brand-logo">
+          PHLOX<span class="dot">.</span>
+          <span class="subtag">ART</span>
+        </a>
+
+        <ul class="nav-menu" id="navMenu">
+          <li><a href="index.html" class="nav-link">Home</a></li>
+          <li><a href="shop.html" class="nav-link active">Shop</a></li>
+          <li><a href="about.html" class="nav-link">About Us</a></li>
+          <li><a href="blog.html" class="nav-link">Blog</a></li>
+          <li><a href="contact.html" class="nav-link">Contact Us</a></li>
+        </ul>
+
+        <div class="nav-actions">
+          <button class="nav-login-btn" onclick="openLoginModal()">login</button>
+          <button class="icon-btn" onclick="openSearchModal()" title="Qidiruv">
+            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+            </svg>
+          </button>
+          <button class="icon-btn" onclick="openCartDrawer()" title="Savat">
+            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path>
+            </svg>
+            <span class="cart-count-badge" style="display:none;">0</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- SUBPAGE HERO BANNER -->
+  <section class="subpage-hero">
+    <div class="container">
+      <h1>Mahsulotlar Katalogi</h1>
+      <p>Eng sara original buyumlar va qo'l mehnati san'at asarlari</p>
+      <div class="breadcrumb">
+        <a href="index.html">Bosh sahifa</a>
+        <span>/</span>
+        <span class="current">Shop Katalog</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- SHOP MAIN CONTENT -->
+  <section class="products-section" style="padding-top: 10px;">
+    <div class="container">
+      
+      <!-- Filter & Sort Bar -->
+      <div class="catalog-filter-bar">
+        <div class="filter-tabs">
+          <button class="filter-tab active" onclick="filterShopCategory('all', this)">Barchasi (8)</button>
+          <button class="filter-tab" onclick="filterShopCategory('smartphones', this)">Smartfonlar</button>
+          <button class="filter-tab" onclick="filterShopCategory('computers', this)">Kompyuterlar</button>
+          <button class="filter-tab" onclick="filterShopCategory('accessories', this)">Aksessuarlar</button>
+        </div>
+
+        <div class="sort-box">
+          <span>Saralash:</span>
+          <select class="sort-select" onchange="sortShopProducts(this.value)">
+            <option value="default">Standart saralash</option>
+            <option value="price-asc">Narx: arzonroqdan</option>
+            <option value="price-desc">Narx: qimmatroqdan</option>
+            <option value="rating">Reyting bo'yicha</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Shop Products Grid -->
+      <div class="products-grid" id="shopProductsGrid">
+        <!-- Rendered by JS -->
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <a href="index.html" class="brand-logo">
+            PHLOX<span class="dot">.</span>
+            <span class="subtag">ART</span>
+          </a>
+          <p class="footer-desc">
+            Eng sara smartfonlar, akustika va noyob karton san'at asarlarining rasmiy onlayn do'koni. O'zbekiston bo'ylab ishonchli yetkazib berish.
+          </p>
+        </div>
+        <div class="footer-col">
+          <h4>Sahifalar</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="shop.html">Shop</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Kategoriyalar</h4>
+          <ul class="footer-links">
+            <li><a href="#" onclick="filterShopCategory('smartphones')">Smartfonlar</a></li>
+            <li><a href="#" onclick="filterShopCategory('computers')">Kompyuterlar</a></li>
+            <li><a href="#" onclick="filterShopCategory('accessories')">Aksessuarlar</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Mijozlar xizmati</h4>
+          <div class="footer-contact-item"><span>📞</span> <a href="tel:+998977371717"><strong>+998 97 737-17-17</strong></a></div>
+          <div class="footer-contact-item"><span>🤖</span> <span>Telegram: @ozodbek_art_bot</span></div>
+          <button class="btn-settings-link" onclick="openSettingsModal()">⚙️ Bot sozlamalari</button>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2026 PHLOX & OZODBEK-ART. Barcha huquqlar himoyalangan.</p>
+        <p>Telegram orqali 100% integratsiyalangan avtomatik buyurtma tizimi.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- CART DRAWER -->
+  <div class="cart-drawer" id="cartDrawer">
+    <div class="cart-drawer-header">
+      <h3>Savat (<span class="cart-count-badge" style="position:static; margin-left:4px;">0</span>)</h3>
+      <button class="cart-close-btn" onclick="closeCartDrawer()">✕</button>
+    </div>
+    <div class="cart-drawer-empty" id="cartDrawerEmpty">
+      <div class="empty-icon">🛒</div>
+      <p>Savatingiz hozircha bo'sh</p>
+    </div>
+    <div class="cart-drawer-items" id="cartDrawerItems"></div>
+    <div class="cart-drawer-footer" id="cartDrawerFooter" style="display:none;">
+      <div class="cart-total-row">
+        <span>Jami summa:</span>
+        <span id="cartDrawerTotal">0 so'm</span>
+      </div>
+      <button class="btn-checkout" onclick="openCheckoutModal()">
+        Telegram orqali buyurtma berish ✈️
+      </button>
+    </div>
+  </div>
+
+  <!-- CHECKOUT MODAL -->
+  <div class="modal-box" id="checkoutModal">
+    <div class="modal-header">
+      <h3>🛍 Buyurtmani rasmiylashtirish</h3>
+      <button class="modal-close" onclick="closeCheckoutModal()">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="checkout-summary-box">
+        <h4 style="font-size:13px; font-weight:800; margin-bottom:10px; color:#555;">BUYURTMA TARKIBI:</h4>
+        <div id="checkoutOrderSummary"></div>
+        <div class="checkout-total-row">
+          <span>Jami:</span>
+          <span id="checkoutOrderTotal">0 so'm</span>
+        </div>
+      </div>
+      <form id="checkoutForm">
+        <div class="form-group">
+          <label for="customerName">Ism va Familiyangiz *</label>
+          <input type="text" id="customerName" name="customerName" class="form-control" placeholder="Ozodbek Karimov" required>
+        </div>
+        <div class="form-group">
+          <label for="customerPhone">Telefon raqamingiz *</label>
+          <input type="tel" id="customerPhone" name="customerPhone" class="form-control" value="+998 " required>
+        </div>
+        <div class="form-group">
+          <label for="customerAddress">Yetkazib berish manzili *</label>
+          <input type="text" id="customerAddress" name="customerAddress" class="form-control" placeholder="Toshkent shahri, Chilonzor" required>
+        </div>
+        <div class="form-group">
+          <label for="paymentMethod">To'lov turi</label>
+          <select id="paymentMethod" name="paymentMethod" class="form-control">
+            <option value="Naqd pul / Qabul qilganda">Naqd pul (Qabul qilinganda)</option>
+            <option value="Click / Payme (Karta orqali)">Click / Payme (Karta orqali)</option>
+            <option value="Telegram orqali kelishish">Telegram orqali kelishish</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="customerComment">Qo'shimcha izoh</label>
+          <textarea id="customerComment" name="customerComment" class="form-control" placeholder="Qo'shimcha ma'lumot"></textarea>
+        </div>
+        <button type="submit" id="checkoutSubmitBtn" class="btn-submit-order">
+          ✈️ Telegram Botga Buyurtma Yuborish
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- TELEGRAM SETTINGS MODAL -->
+  <div class="modal-box" id="settingsModal">
+    <div class="modal-header">
+      <h3>⚙️ Telegram Bot Sozlamalari</h3>
+      <button class="modal-close" onclick="closeSettingsModal()">✕</button>
+    </div>
+    <div class="modal-body">
+      <form id="telegramSettingsForm">
+        <div class="form-group">
+          <label for="settingBotToken">Bot Token</label>
+          <input type="text" id="settingBotToken" name="botToken" class="form-control" required>
+        </div>
+        <div class="form-group">
+          <label for="settingChatId">Chat ID</label>
+          <input type="text" id="settingChatId" name="chatId" class="form-control" required>
+        </div>
+        <div class="form-group">
+          <label for="settingBotUsername">Bot Username</label>
+          <input type="text" id="settingBotUsername" name="botUsername" class="form-control">
+        </div>
+        <button type="submit" class="btn-pill-red" style="width:100%; padding:13px;">Saqlash</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- SEARCH MODAL -->
+  <div class="modal-box search-modal-box" id="searchModal">
+    <div class="modal-header">
+      <h3>🔍 Mahsulot qidirish</h3>
+      <button class="modal-close" onclick="closeSearchModal()">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="search-input-wrap">
+        <span class="search-icon-inside">🔍</span>
+        <input type="text" id="searchInputModal" placeholder="Mahsulot nomi yoki toifasini yozing..." autocomplete="off">
+      </div>
+      <div class="search-results-list" id="searchResultsModal"></div>
+    </div>
+  </div>
+
+  <!-- LOGIN MODAL -->
+  <div class="modal-box" id="loginModal">
+    <div class="modal-header">
+      <h3>Xush kelibsiz!</h3>
+      <button class="modal-close" onclick="closeLoginModal()">✕</button>
+    </div>
+    <div class="modal-body">
+      <form onsubmit="event.preventDefault(); showToast('✅ Kirildi', 'success'); closeLoginModal();">
+        <div class="form-group">
+          <label>Telefon yoki E-mail</label>
+          <input type="text" class="form-control" required>
+        </div>
+        <div class="form-group">
+          <label>Parol</label>
+          <input type="password" class="form-control" required>
+        </div>
+        <button type="submit" class="btn-pill-red" style="width:100%; padding:13px;">Kirish</button>
+      </form>
+    </div>
+  </div>
+
+  <div class="modal-backdrop" id="modalBackdrop"></div>
+
+  <script src="script.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      renderBestSellers("shopProductsGrid");
+
+      // URL parametri bo'yicha filtrlash (?category=...)
+      const params = new URLSearchParams(window.location.search);
+      const catParam = params.get('category');
+      if (catParam) {
+        const btn = document.querySelector(`.filter-tab[onclick*="${catParam}"]`);
+        filterShopCategory(catParam, btn);
+      }
+    });
+
+    function filterShopCategory(category, btn) {
+      document.querySelectorAll('.filter-tab').forEach(t => t.classList.remove('active'));
+      if (btn) btn.classList.add('active');
+
+      const cards = document.querySelectorAll('#shopProductsGrid .product-card');
+      cards.forEach(card => {
+        const cat = card.getAttribute('data-category');
+        if (category === 'all' || cat === category) {
+          card.style.display = 'flex';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+
+    function sortShopProducts(criterion) {
+      const grid = document.getElementById('shopProductsGrid');
+      const cards = Array.from(grid.querySelectorAll('.product-card'));
+
+      if (criterion === 'price-asc') {
+        cards.sort((a, b) => parseInt(a.querySelector('.current-price').textContent.replace(/\D/g, '')) - parseInt(b.querySelector('.current-price').textContent.replace(/\D/g, '')));
+      } else if (criterion === 'price-desc') {
+        cards.sort((a, b) => parseInt(b.querySelector('.current-price').textContent.replace(/\D/g, '')) - parseInt(a.querySelector('.current-price').textContent.replace(/\D/g, '')));
+      } else if (criterion === 'rating') {
+        cards.sort((a, b) => parseFloat(b.querySelector('.rating-num').textContent) - parseFloat(a.querySelector('.rating-num').textContent));
+      }
+
+      cards.forEach(c => grid.appendChild(c));
+    }
+  </script>
+</body>
+</html>
