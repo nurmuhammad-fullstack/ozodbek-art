@@ -177,18 +177,26 @@ header.site-header {
 
 /* Logo */
 .brand-logo {
-  display: flex;
+  display: inline-flex;
   align-items: center;
-  gap: 6px;
   font-family: var(--font-heading);
-  font-size: 26px;
+  font-size: 24px;
   font-weight: 900;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.02em;
   color: #111;
+  text-decoration: none;
+  transition: opacity var(--transition-fast), transform var(--transition-fast);
 }
 
+.brand-logo:hover {
+  opacity: 0.92;
+  transform: translateY(-1px);
+}
+
+.brand-logo .logo-art,
 .brand-logo .dot {
   color: var(--primary-red);
+  font-weight: 900;
 }
 
 .brand-logo .subtag {
