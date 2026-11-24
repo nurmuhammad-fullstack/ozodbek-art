@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title id="pageTitle">Mahsulot — OZODBEK-ART</title>
+  <meta name="description" id="pageDescription" content="OZODBEK-ART rasmiy do'konidagi eksklyuziv gadjet san'at asari.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- TOP ANNOUNCEMENT BAR -->
+  <div class="top-announcement">
+    <div class="container" style="display:flex; justify-content:space-between; align-items:center; width:100%;">
+      <div class="left">
+        <span class="live-dot"></span>
+        <span>Telegram Bot orqali buyurtmalar 24/7 qabul qilinadi</span>
+      </div>
+      <div class="right">
+        <button class="btn-settings-link" onclick="openSettingsModal()">⚙️ Telegram Sozlamalari</button>
+        <a href="tel:+998977371717">📞 +998 97 737-17-17</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- SITE HEADER -->
+  <header class="site-header">
+    <div class="container">
+      <div class="nav-wrapper">
+        <a href="index.html" class="brand-logo">
+          OZODBEK<span class="logo-art">-ART</span>
+        </a>
+
+        <ul class="nav-menu" id="navMenu">
+          <li><a href="index.html" class="nav-link">Bosh sahifa</a></li>
+          <li><a href="shop.html" class="nav-link active">Katalog</a></li>
+          <li><a href="about.html" class="nav-link">Biz haqimizda</a></li>
+          <li><a href="blog.html" class="nav-link">Blog</a></li>
+          <li><a href="contact.html" class="nav-link">Bog'lanish</a></li>
+        </ul>
+
+        <div class="nav-actions">
+          <!-- Theme Toggle -->
+          <button class="icon-btn theme-toggle-btn" id="themeToggleBtn" onclick="toggleTheme()" title="Tungi / Kunduzgi rejim">🌙</button>
+
+          <!-- Wishlist -->
+          <button class="icon-btn wishlist-btn" onclick="openWishlistModal()" title="Sevimlilar">
+            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" width="20" height="20">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
+            </svg>
+            <span class="wishlist-count-badge" style="display:none;">0</span>
+          </button>
+
+          <!-- Search -->
+          <button class="icon-btn" onclick="openSearchModal()" title="Qidiruv">
+            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+            </svg>
+          </button>
+
+          <!-- Cart -->
+          <button class="icon-btn" onclick="openCartDrawer()" title="Savat">
+            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path>
+            </svg>
+            <span class="cart-count-badge" style="display:none;">0</span>
+          </button>
+
+          <button class="nav-login-btn" onclick="openLoginModal()">Kirish</button>
+
+          <!-- Mobile Toggle -->
+          <button class="mobile-toggle" onclick="document.getElementById('navMenu').classList.toggle('open')" aria-label="Menyu">
+            <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- BREADCRUMB -->
+  <section class="container" style="padding-top: 20px;">
+    <div style="font-size: 13px; color: var(--text-muted); display:flex; align-items:center; gap: 8px;">
+      <a href="index.html" style="color:var(--text-muted);">Bosh sahifa</a>
+      <span>/</span>
+      <a href="shop.html" style="color:var(--text-muted);">Katalog</a>
+      <span>/</span>
+      <span id="breadcrumbTitle" style="color:var(--text-dark); font-weight:700;">Mahsulot</span>
+    </div>
+  </section>
+
+  <!-- PRODUCT DETAIL SECTION -->
+  <section class="product-detail-section" style="padding: 24px 0 60px;">
+    <div class="container">
+      
+      <div class="product-detail-wrap" id="productDetailCard">
+        <!-- Left: Image & Gallery -->
+        <div class="product-detail-media">
+          <img src="" alt="" id="productMainImg" style="transition: transform 0.3s ease;">
+          <div class="product-gallery-thumbs" id="productGalleryThumbs"></div>
+        </div>
+
+        <!-- Right: Info & Actions -->
+        <div class="product-detail-info">
+          <div style="display:flex; justify-content:space-between; align-items:flex-start;">
+            <span id="productBadgeTag" style="font-size:12px; font-weight:800; color:var(--primary-red); text-transform:uppercase; letter-spacing:0.08em; display:inline-block; margin-bottom:6px;">
+              EKSKLYUZIV SAN'AT ASARI
+            </span>
+            <button id="productDetailWishlistBtn" class="overlay-btn" onclick="handleDetailWishlistToggle()" title="Sevimlilarga qo'shish" style="position:static; opacity:1; transform:none; box-shadow:none; border:1px solid var(--border-light);">
+              🤍
+            </button>
+          </div>
+
+          <h1 id="productTitle" style="margin: 6px 0 12px; font-size: 32px; font-weight: 900;">Yuklanmoqda...</h1>
+
+          <div class="card-rating" style="margin-bottom: 16px; display:flex; align-items:center; gap:10px;">
+            <span class="stars" style="color:#f59e0b; font-size:18px;">★★★★★</span>
+            <span class="rating-num" id="productRatingNum" style="font-weight:700; color:var(--text-muted);">5.0</span>
+            <a href="#reviewsSection" style="font-size:13px; color:var(--primary-red); text-decoration:underline;" id="productReviewCountLink">sharhlar</a>
+          </div>
+
+          <div class="product-detail-price" id="productPriceRow" style="font-size: 28px; font-weight: 900; color: var(--primary-red); margin-bottom: 16px; display:flex; align-items:center; gap:12px;">
+            <span id="productCurrentPrice">0 so'm</span>
+            <span id="productOldPrice" style="font-size:18px; color:var(--text-light); text-decoration:line-through; font-weight:500;"></span>
+          </div>
+
+          <p id="productDescription" style="font-size: 15px; color: var(--text-dark); line-height: 1.7; margin-bottom: 24px; opacity:0.9;">
+            Tavsif yuklanmoqda...
+          </p>
+
+          <!-- Specifications Table -->
+          <table class="product-spec-table" id="productSpecsTable" style="margin-bottom: 28px;">
+            <!-- Generated dynamically -->
+          </table>
+
+          <!-- Actions -->
+          <div style="display:flex; flex-direction:column; gap:12px;">
+            <div style="display:flex; gap:12px; flex-wrap:wrap;">
+              <!-- Quantity selector -->
+              <div style="display:inline-flex; align-items:center; border:1px solid var(--border-light); border-radius:var(--radius-pill); padding:4px 12px; background:var(--hero-bg); height:48px;">
+                <button onclick="changeDetailQty(-1)" style="background:none; border:none; font-size:18px; cursor:pointer; font-weight:bold; padding:0 8px;">−</button>
+                <span id="detailQty" style="font-weight:800; min-width:24px; text-align:center;">1</span>
+                <button onclick="changeDetailQty(1)" style="background:none; border:none; font-size:18px; cursor:pointer; font-weight:bold; padding:0 8px;">+</button>
+              </div>
+
+              <!-- Add to Cart -->
+              <button class="btn-pill-red" style="flex:2; height:48px; font-size:15px;" onclick="addCurrentProductToCart()">
+                🛒 Savatga qo'shish
+              </button>
+            </div>
+
+            <div style="display:flex; gap:12px; flex-wrap:wrap;">
+              <!-- 1-Click Quick Buy -->
+              <button class="btn-quick-buy-submit" style="flex:1; height:48px; padding:0 20px; display:inline-flex; align-items:center; justify-content:center; gap:8px;" onclick="openCurrentProductQuickBuy()">
+                ⚡ 1 bosishda tezkor xarid
+              </button>
+
+              <!-- Telegram Order -->
+              <button class="btn-submit-order" style="flex:1; height:48px; border-radius:var(--radius-pill); font-size:14px;" onclick="openCurrentProductCheckout()">
+                ✈️ Telegramda buyurtma berish
+              </button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- REVIEWS & COMMENTS SECTION -->
+      <div class="reviews-section" id="reviewsSection">
+        <div class="reviews-header">
+          <div>
+            <h2 style="font-size:24px; font-weight:800;">Mijozlar fikrlari va sharhlari</h2>
+            <p style="color:var(--text-muted); font-size:14px;">Ushbu san'at asarini xarid qilgan foydalanuvchilar bahosi</p>
+          </div>
+          <button class="btn-pill-red" onclick="document.getElementById('reviewFormWrap').scrollIntoView({behavior:'smooth'})" style="font-size:13px; padding:10px 18px;">
+            ✍️ Fikr qoldirish
+          </button>
+        </div>
+
+        <div class="reviews-list" id="productReviewsList">
+          <!-- Rendered by JS -->
+        </div>
+
+        <!-- Add Review Form -->
+        <div class="review-add-box" id="reviewFormWrap">
+          <h3 style="font-size:18px; font-weight:800; margin-bottom:14px;">O'z fikringizni bildiring</h3>
+          <form id="productReviewForm" onsubmit="handleReviewFormSubmit(event)">
+            <div style="margin-bottom:12px;">
+              <label style="display:block; font-size:13px; font-weight:700; margin-bottom:6px;">Bahoyingiz:</label>
+              <div class="star-rating-select" id="starRatingSelect">
+                <span data-val="1">★</span>
+                <span data-val="2">★</span>
+                <span data-val="3">★</span>
+                <span data-val="4">★</span>
+                <span data-val="5" class="selected">★</span>
+              </div>
+            </div>
+            <div class="form-group">
+              <label>Ismingiz *</label>
+              <input type="text" id="reviewAuthor" class="form-control" placeholder="Ismingizni yozing" required>
+            </div>
+            <div class="form-group">
+              <label>Fikringiz va taassurotlaringiz *</label>
+              <textarea id="reviewText" class="form-control" rows="3" placeholder="San'at asari haqidagi fikringiz..." required></textarea>
+            </div>
+            <button type="submit" class="btn-pill-red" style="padding:12px 24px; font-size:14px;">
+              Sharhni chop etish
+            </button>
+          </form>
+        </div>
+      </div>
+
+      <!-- RELATED PRODUCTS SECTION -->
+      <div style="margin-top: 60px;">
+        <h2 style="font-size:24px; font-weight:800; margin-bottom:24px;">O'xshash mahsulotlar</h2>
+        <div class="products-grid" id="relatedProductsGrid"></div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- SITE FOOTER -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <a href="index.html" class="brand-logo">OZODBEK<span class="logo-art">-ART</span></a>
+          <p class="footer-desc">Eng sara smartfonlar va noyob karton san'at asarlarining rasmiy onlayn do'koni.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Sahifalar</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">Bosh sahifa</a></li>
+            <li><a href="shop.html">Katalog</a></li>
+            <li><a href="about.html">Biz haqimizda</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="contact.html">Bog'lanish</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Mijozlar xizmati</h4>
+          <div class="footer-contact-item"><span>📞</span> <a href="tel:+998977371717"><strong>+998 97 737-17-17</strong></a></div>
+          <div class="footer-contact-item"><span>🤖</span> <span>Telegram: @ozodbek_art_bot</span></div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2026 OZODBEK-ART. Barcha huquqlar himoyalangan.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- =========================================================
+       MODALS & DRAWERS
+       ========================================================= -->
+  <!-- CART DRAWER -->
+  <div class="cart-drawer" id="cartDrawer">
+    <div class="cart-drawer-header">
+      <h3>Savatingiz</h3>
+      <button class="cart-close-btn" onclick="closeCartDrawer()">✕</button>
+    </div>
+    <div class="cart-drawer-empty" id="cartDrawerEmpty">
+      <div class="empty-icon">🛒</div>
+      <p>Savatingiz bo'sh</p>
+    </div>
+    <div class="cart-drawer-items" id="cartDrawerItems"></div>
+    <div class="cart-drawer-footer" id="cartDrawerFooter" style="display:none;">
+      <div class="cart-total-row">
+        <span>Jami summa:</span>
+        <span id="cartDrawerTotal">0 so'm</span>
+      </div>
+      <button class="btn-checkout" onclick="openCheckoutModal()">Telegram orqali buyurtma berish ✈️</button>
+    </div>
+  </div>
+
+  <!-- CHECKOUT MODAL -->
+  <div class="modal-box" id="checkoutModal">
+    <div class="modal-header">
+      <h3>🛍 Buyurtmani rasmiylashtirish</h3>
+      <button class="modal-close" onclick="closeCheckoutModal()">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="checkout-summary-box">
+        <div id="checkoutOrderSummary"></div>
+        <div class="checkout-total-row">
+          <span>Jami:</span>
+          <span id="checkoutOrderTotal">0 so'm</span>
+        </div>
+      </div>
+      <form id="checkoutForm">
+        <div class="form-group">
+          <label>Ism va Familiyangiz *</label>
+          <input type="text" name="customerName" class="form-control" required placeholder="Masalan: Sardor Aliyev">
+        </div>
+        <div class="form-group">
+          <label>Telefon raqamingiz *</label>
+          <input type="tel" name="customerPhone" class="form-control" value="+998 " required>
+        </div>
+        <div class="form-group">
+          <label>Yetkazib berish manzili *</label>
+          <input type="text" name="customerAddress" class="form-control" required placeholder="Shahar, tuman, ko'cha, xonadon">
+        </div>
+        <div class="form-group">
+          <label>To'lov turi</label>
+          <select name="paymentMethod" class="form-control">
+            <option>Qabul qilganda naqd pul</option>
+            <option>Click / Payme orqali karta</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Qo'shimcha izoh yoki istaklar</label>
+          <textarea name="customerComment" class="form-control" rows="2" placeholder="Masalan: Sovg'a qutisiga o'rab berilsin"></textarea>
+        </div>
+        <button type="submit" id="checkoutSubmitBtn" class="btn-submit-order">
+          ✈️ Telegram Botga Buyurtma Yuborish
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- SETTINGS MODAL -->
+  <div class="modal-box" id="settingsModal">
+    <div class="modal-header">
+      <h3>⚙️ Telegram Bot Sozlamalari</h3>
+      <button class="modal-close" onclick="closeSettingsModal()">✕</button>
+    </div>
+    <div class="modal-body">
+      <form id="telegramSettingsForm">
+        <div class="form-group">
+          <label>Bot Token</label>
+          <input type="text" id="settingBotToken" name="botToken" class="form-control" required>
+        </div>
+        <div class="form-group">
+          <label>Chat ID</label>
+          <input type="text" id="settingChatId" name="chatId" class="form-control" required>
+        </div>
+        <div class="form-group">
+          <label>Bot Username</label>
+          <input type="text" id="settingBotUsername" name="botUsername" class="form-control">
+        </div>
+        <button type="submit" class="btn-pill-red" style="width:100%; padding:13px;">Saqlash</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- SEARCH MODAL -->
+  <div class="modal-box search-modal-box" id="searchModal">
+    <div class="modal-header">
+      <h3>🔍 Qidiruv</h3>
+      <button class="modal-close" onclick="closeSearchModal()">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="search-input-wrap">
+        <span class="search-icon-inside">🔍</span>
+        <input type="text" id="searchInputModal" placeholder="Mahsulot nomi...">
+      </div>
+      <div class="search-results-list" id="searchResultsModal"></div>
+    </div>
+  </div>
+
+  <!-- LOGIN MODAL -->
+  <div class="modal-box" id="loginModal">
+    <div class="modal-header">
+      <h3>Kirish</h3>
+      <button class="modal-close" onclick="closeLoginModal()">✕</button>
+    </div>
+    <div class="modal-body">
+      <form onsubmit="event.preventDefault(); showToast('✅ Kirildi', 'success'); closeLoginModal();">
+        <div class="form-group">
+          <label>Telefon yoki E-mail</label>
+          <input type="text" class="form-control" required>
+        </div>
+        <div class="form-group">
+          <label>Parol</label>
+          <input type="password" class="form-control" required>
+        </div>
+        <button type="submit" class="btn-pill-red" style="width:100%; padding:13px;">Kirish</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- WISHLIST MODAL -->
+  <div class="modal-box" id="wishlistModal">
+    <div class="modal-header">
+      <h3>❤️ Sevimlilar ro'yxati</h3>
+      <button class="modal-close" onclick="closeWishlistModal()">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="wishlist-items-list" id="wishlistItemsList"></div>
+    </div>
+  </div>
+
+  <!-- QUICK BUY MODAL -->
+  <div class="modal-box" id="quickBuyModal">
+    <div class="modal-header">
+      <h3>⚡ Tezkor xarid</h3>
+      <button class="modal-close" onclick="closeQuickBuyModal()">✕</button>
+    </div>
+    <div class="modal-body">
+      <div id="quickBuyPreview"></div>
+      <form id="quickBuyForm">
+        <div class="form-group">
+          <label>Ismingiz *</label>
+          <input type="text" name="quickCustomerName" class="form-control" placeholder="Ismingizni kiriting" required>
+        </div>
+        <div class="form-group">
+          <label>Telefon raqamingiz *</label>
+          <input type="tel" name="quickCustomerPhone" class="form-control" value="+998 " required>
+        </div>
+        <button type="submit" id="quickBuySubmitBtn" class="btn-quick-buy-submit">
+          ⚡ Tasdiqlash va Telegramga yuborish
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <div class="modal-backdrop" id="modalBackdrop"></div>
+
+  <!-- SCRIPTS -->
+  <script src="script.js"></script>
+  <script>
+    let activeProduct = null;
+    let detailQtyValue = 1;
+    let selectedReviewRating = 5;
+
+    document.addEventListener("DOMContentLoaded", () => {
+      const urlParams = new URLSearchParams(window.location.search);
+      const prodId = parseInt(urlParams.get("id")) || 1;
+      activeProduct = PRODUCTS.find(p => p.id === prodId) || PRODUCTS[0];
+
+      renderProductDetail(activeProduct);
+      renderReviews(activeProduct.id);
+      renderRelatedProducts(activeProduct);
+      initRatingStars();
+    });
+
+    function renderProductDetail(product) {
+      document.getElementById("pageTitle").textContent = `${product.name} — OZODBEK-ART`;
+      document.getElementById("breadcrumbTitle").textContent = product.name;
+      document.getElementById("productTitle").textContent = product.name;
+      document.getElementById("productBadgeTag").textContent = product.badge ? `ORIGINAL ART • ${product.badge}` : "ORIGINAL ART";
+      document.getElementById("productRatingNum").textContent = `${product.rating} (${product.reviews} ta sharh)`;
+      document.getElementById("productReviewCountLink").textContent = `${product.reviews} ta sharh`;
+      document.getElementById("productCurrentPrice").textContent = formatPrice(product.price);
+      
+      const oldPriceElem = document.getElementById("productOldPrice");
+      if (product.oldPrice) {
+        oldPriceElem.textContent = formatPrice(product.oldPrice);
+        oldPriceElem.style.display = "inline";
+      } else {
+        oldPriceElem.style.display = "none";
+      }
+
+      document.getElementById("productDescription").textContent = product.description;
+
+      // Asosiy rasm
+      const mainImg = document.getElementById("productMainImg");
+      mainImg.src = product.image;
+      mainImg.alt = product.name;
+
+      // Galereya miniatyuralari
+      const galleryWrap = document.getElementById("productGalleryThumbs");
+      const galleryList = product.gallery && product.gallery.length ? product.gallery : [product.image];
+      let thumbsHtml = "";
+      galleryList.forEach((src, idx) => {
+        thumbsHtml += `
+          <div class="gallery-thumb ${idx === 0 ? 'active' : ''}" onclick="changeMainImage('${src}', this)">
+            <img src="${src}" alt="Thumb ${idx + 1}">
+          </div>
+        `;
+      });
+      galleryWrap.innerHTML = thumbsHtml;
+
+      // Texnik spetsifikatsiyalar
+      const specsTable = document.getElementById("productSpecsTable");
+      let specsHtml = "";
+      if (product.specs) {
+        for (const [key, val] of Object.entries(product.specs)) {
+          specsHtml += `<tr><td>${key}</td><td>${val}</td></tr>`;
+        }
+      } else {
+        specsHtml += `<tr><td>Kategoriya</td><td>${product.categoryName}</td></tr>`;
+        specsHtml += `<tr><td>Holati</td><td>Yangi (Qo'lda tayyorlangan)</td></tr>`;
+      }
+      specsTable.innerHTML = specsHtml;
+
+      // Wishlist tugmasi
+      updateDetailWishlistButton();
+    }
+
+    function changeMainImage(src, thumbElem) {
+      const mainImg = document.getElementById("productMainImg");
+      mainImg.src = src;
+      document.querySelectorAll(".gallery-thumb").forEach(t => t.classList.remove("active"));
+      if (thumbElem) thumbElem.classList.add("active");
+    }
+
+    function changeDetailQty(delta) {
+      detailQtyValue = Math.max(1, detailQtyValue + delta);
+      document.getElementById("detailQty").textContent = detailQtyValue;
+    }
+
+    function addCurrentProductToCart() {
+      if (!activeProduct) return;
+      addToCart(activeProduct.id, detailQtyValue);
+    }
+
+    function openCurrentProductQuickBuy() {
+      if (!activeProduct) return;
+      openQuickBuyModal(activeProduct.id);
+    }
+
+    function openCurrentProductCheckout() {
+      if (!activeProduct) return;
+      openCheckoutModal({
+        id: activeProduct.id,
+        name: activeProduct.name,
+        price: activeProduct.price,
+        image: activeProduct.image
+      });
+    }
+
+    function handleDetailWishlistToggle() {
+      if (!activeProduct) return;
+      toggleWishlist(activeProduct.id);
+      updateDetailWishlistButton();
+    }
+
+    function updateDetailWishlistButton() {
+      const btn = document.getElementById("productDetailWishlistBtn");
+      if (!btn || !activeProduct) return;
+      const isFav = isInWishlist(activeProduct.id);
+      btn.innerHTML = isFav ? "❤️" : "🤍";
+      btn.classList.toggle("active", isFav);
+    }
+
+    function renderReviews(productId) {
+      const container = document.getElementById("productReviewsList");
+      if (!container) return;
+      const reviews = getProductReviews(productId);
+
+      let html = "";
+      reviews.forEach(r => {
+        let stars = "★".repeat(r.rating) + "☆".repeat(5 - r.rating);
+        html += `
+          <div class="review-item">
+            <div class="review-meta">
+              <span class="review-author">👤 ${r.author} <span style="color:#f59e0b; margin-left:8px;">${stars}</span></span>
+              <span class="review-date">${r.date}</span>
+            </div>
+            <p class="review-text">${r.text}</p>
+          </div>
+        `;
+      });
+      container.innerHTML = html;
+    }
+
+    function initRatingStars() {
+      const stars = document.querySelectorAll("#starRatingSelect span");
+      stars.forEach(star => {
+        star.addEventListener("click", () => {
+          selectedReviewRating = parseInt(star.getAttribute("data-val"));
+          stars.forEach(s => {
+            const val = parseInt(s.getAttribute("data-val"));
+            s.classList.toggle("selected", val <= selectedReviewRating);
+          });
+        });
+      });
+    }
+
+    function handleReviewFormSubmit(e) {
+      e.preventDefault();
+      if (!activeProduct) return;
+
+      const author = document.getElementById("reviewAuthor").value.trim();
+      const text = document.getElementById("reviewText").value.trim();
+
+      if (!author || !text) return;
+
+      addProductReview(activeProduct.id, author, selectedReviewRating, text);
+      showToast("✅ Fikringiz muvaffaqiyatli qabul qilindi!", "success");
+
+      document.getElementById("productReviewForm").reset();
+      renderReviews(activeProduct.id);
+    }
+
+    function renderRelatedProducts(curr) {
+      const grid = document.getElementById("relatedProductsGrid");
+      if (!grid) return;
+
+      const related = PRODUCTS.filter(p => p.id !== curr.id).slice(0, 4);
+      let html = "";
+      related.forEach(p => {
+        const isFav = isInWishlist(p.id);
+        html += `
+          <div class="product-card" data-category="${p.category}">
+            <div class="card-media">
+              ${p.badge ? `<span class="product-badge badge-${p.badge.toLowerCase().includes('sale') ? 'sale' : 'hot'}">${p.badge}</span>` : ''}
+              <a href="${p.url}" class="card-img-link">
+                <img src="${p.image}" alt="${p.name}" class="product-img" loading="lazy">
+              </a>
+              <div class="card-overlay-actions">
+                <button onclick="toggleWishlist(${p.id})" title="Sevimlilar" class="overlay-btn btn-wishlist ${isFav ? 'active' : ''}">${isFav ? '❤️' : '🤍'}</button>
+                <button onclick="openQuickBuyModal(${p.id})" title="1 bosishda tezkor xarid" class="overlay-btn btn-quick">⚡</button>
+                <button onclick="addToCart(${p.id})" title="Savatga qo'shish" class="overlay-btn btn-cart">🛒</button>
+                <a href="${p.url}" title="Batafsil ko'rish" class="overlay-btn btn-view">👁</a>
+              </div>
+            </div>
+            <div class="card-body">
+              <h3 class="product-title"><a href="${p.url}">${p.name}</a></h3>
+              <div class="card-price-row">
+                <div class="price-box">
+                  <span class="current-price">${formatPrice(p.price)}</span>
+                </div>
+                <button class="btn-add-cart" onclick="addToCart(${p.id})">Savatga</button>
+              </div>
+            </div>
+          </div>
+        `;
+      });
+      grid.innerHTML = html;
+    }
+  </script>
+</body>
+</html>

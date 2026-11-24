@@ -1,0 +1,12 @@
+{
+  "name": "ozodbek-art",
+  "version": "1.0.0",
+  "description": "OZODBEK-ART — Electronics & Cardboard Art Devices Store",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "keywords": ["ecommerce", "art", "cardboard", "gadgets", "telegram-bot"],
+  "author": "Ozodbek",
+  "license": "MIT"
+}
